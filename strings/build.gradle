@@ -1,19 +1,37 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
-    id 'maven-publish'
+    id 'com.vanniktech.maven.publish'
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            release(MavenPublication) {
-                from components.release
+group = 'io.github.pgwiazdowskispyro'
+version = '1.0.1'
 
-                groupId = 'com.github.pgwiazdowskispyro'
-                artifactId = 'strings'
-                version = '1.0.1'
+mavenPublishing {
+    pom {
+        name = 'Strings library'
+        description = 'Description of library'
+        url = 'https://github.com/pgwiazdowskispyro/LibraryPublishTest'
+        signing {
+            sign configurations.archives
+        }
+        licenses {
+            license {
+                name = 'The Apache License, Version 2.0'
+                url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
             }
+        }
+        developers {
+            developer {
+                id = "pgwiazdowski"
+                name = "Patryk Gwiazdowski"
+                email = "pgwiazdowski@gmail.com"
+            }
+        }
+        scm {
+            connection = 'scm:git:git://github.com/pgwiazdowskispyro/LibraryPublishTest.git'
+            developerConnection = 'scm:git:ssh://github.com/pgwiazdowskispyro/LibraryPublishTest.git'
+            url = 'https://github.com/pgwiazdowskispyro/LibraryPublishTest'
         }
     }
 }
